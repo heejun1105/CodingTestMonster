@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 제출</title>
+</head>
+<body>
+    <h1>퀴즈 정답 제출</h1>
+    <form action="/quiz/submit" method="post">
+        <label for="quizId">퀴즈 ID:</label>
+        <input type="text" id="quizId" name="quizId"><br><br>
+        
+        <label for="correct">정답:</label>
+        <input type="text" id="correct" name="correct"><br><br>
+        
+        <label for="isPublic">정답 공개 여부:</label>
+        <input type="checkbox" id="isPublic" name="isPublic"><br><br>
+        
+        <label for="Id">사용자 ID:</label>
+        <input type="text" id="Id" name="Id"><br><br>
+        
+        <input type="submit" value="정답 제출">
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>회원가입</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>회원가입</h1>
+        <form th:action="@{/member/signup}" th:object="${memberCreateForm}" method="post" name="signup">
+            <div class="form-signup">
+                <label for="username">아이디</label>
+                <input type="text" th:field="*{username}" name="username" id="username">
+            </div>
+
+            <div class="form-signup">
+                <label for="password">비밀번호</label>
+                <input type="password" th:field="*{password}" name="password" id="password">
+            </div>
+
+            <div class="form-signup">
+                <label for="nickname">닉네임</label>
+                <input type="text" th:field="*{nickname}" id="nickname">
+            </div>
+
+            <div class="form-signup">
+                <label for="email">이메일</label>
+                <input type="email" th:field="*{email}" id="email" placeholder="ex) abc@naver.com">
+            </div>
+
+            <div class="sign-button">
+                <button class="sub-but" type="submit">가입하기</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

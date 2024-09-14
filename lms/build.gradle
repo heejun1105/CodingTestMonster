@@ -1,0 +1,71 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.3'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+
+group = 'com.test'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+	//Spring AI 아티팩트는 Spring Milestone 및 Snapshot 저장소에 게시됩니다. 이러한 저장소를 빌드 시스템에 추가
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+
+	//스프링 ai에서 클로드ai 의존성 추가
+	implementation 'org.springframework.ai:spring-ai-anthropic-spring-boot-starter:1.0.0-M2'
+
+    
+
+	//Junit 테스트용 코드추가
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	// spring security 사용
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// createform @NotEmpty 사용
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// RESTful API 시각화 Swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

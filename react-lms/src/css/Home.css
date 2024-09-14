@@ -1,0 +1,172 @@
+body {
+  background-color: #263238 !important;
+  color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100%;
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  color: #f5f5f5;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #B0BEC5; /* 밝은 회색으로 변경하여 가독성 향상 */
+}
+
+main {
+  color: #f5f5f5;
+  padding: 2rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  flex: 1;
+  background-color: #37474F !important;
+  color: #f5f5f5; /* 카드 내 텍스트 색상 변경 */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 강화 */
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* 호버 시 그림자 강화 */
+}
+
+.card .title {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #4FC3F7;
+  padding-bottom: 0.5rem;
+}
+.card .title h2 {
+  font-size: 1.5rem;
+  color: #64FFDA;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #546E7A; /* 테이블 선 색상 변경 */
+}
+
+th {
+  background-color: #296b5c;
+  color: #f5f5f5;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 !important;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+.challenge-title, .notice-title {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #4FC3F7; /* 링크 색상 변경 */
+}
+
+.notice-date, .problem-difficulty {
+  font-size: 0.9rem;
+  color: #B0BEC5; /* 부가 정보 색상 변경 */
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  color: #f5f5f5;
+  margin-bottom: 1.5rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: #4FC3F7;
+  color: #263238;
+}
+
+.btn-secondary {
+  background-color: #64FFDA;
+  color: #263238;
+}
+
+.btn-tertiary {
+  background-color: #FF8A65;
+  color: #263238;
+}
+
+.ctm-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ctm-image {
+  width: 50%;
+  max-width: 500px;
+  height: auto;
+}
+
+.text-color {
+  color: rgb(176, 190, 197) !important;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 정답</title>
+</head>
+<body>
+    <h1>퀴즈 정답</h1>
+    <p>퀴즈 제목: <span th:text="${quizAnswer.quiz.title}"></span></p>
+    <p>퀴즈 내용: <span th:text="${quizAnswer.quiz.content}"></span></p>
+    <p>정답: 
+        <span th:text="${quizAnswer.answer != null ? quizAnswer.answer : '비공개'}"></span>
+    </p>
+</body>
+</html>

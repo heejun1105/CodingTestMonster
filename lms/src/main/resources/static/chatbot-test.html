@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Test Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #message {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #submit {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #response {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>ChatBot Test Page</h1>
+    <textarea id="message" rows="4" placeholder="Enter your message here"></textarea>
+    <button id="submit">Generate Response</button>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            var message = document.getElementById('message').value;
+            var responseDiv = document.getElementById('response');
+            
+            responseDiv.innerHTML = 'Generating response...';
+            
+            axios.get('/ai/generate', {
+                params: {
+                    message: message
+                }
+            })
+            .then(function (response) {
+                responseDiv.innerHTML = '' + response.data.generation;
+            })
+            .catch(function (error) {
+                responseDiv.innerHTML = 'Error: ' + error.message;
+            });
+        });
+    </script>
+</body>
+</html>
