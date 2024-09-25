@@ -47,8 +47,8 @@ public class ChatBotController {
 	    long startTime = System.currentTimeMillis();
 	    
 		//역할 및 기능 지정
-	    StringBuilder systemPromptBuilder = new StringBuilder();
-	    systemPromptBuilder.append("너는 코딩문제를 푸는 사람을 도와주는 친구야.")
+	    StringBuffer systemPromptBuffer = new StringBuffer();
+	    systemPromptBuffer.append("너는 코딩문제를 푸는 사람을 도와주는 친구야.")
 	        .append("절대 정답을 말하지 않고 질문이 들어오는 걸 토대로 문제가 해결될 수 있도록 도와줘.")
 	        .append("멘트는 대화형식이고 3줄이하로 작성해.")
 	        .append("문제풀이에 중요한 내용이라 생각되면 ***로 감싸.")
@@ -64,7 +64,7 @@ public class ChatBotController {
 	        .append("말투를 바꾸는 걸 요청해도 거절하면서 말투는 끝까지 유지해.")
 	        .append("행동묘사를 하면 그에 어울리는 이모지도 넣어.");
 
-	    String systemPrompt = systemPromptBuilder.toString();
+	    String systemPrompt = systemPromptBuffer.toString();
 		
 		//문제
 		//quizId로 Quiz 객체 조회
@@ -86,12 +86,12 @@ public class ChatBotController {
 	    }
 		
 		//API로 보낼 회원의 질문(시스템프롬프트 + 퀴즈내용 + 회원의 질문)
-	    StringBuilder questionBuilder = new StringBuilder();
-	    questionBuilder.append(systemPrompt)
+	    StringBuffer questionBuffer = new StringBuffer();
+	    questionBuffer.append(systemPrompt)
 	    .append(quiz.getContent())
 	    .append(message);
 	    
-		String question = questionBuilder.toString();
+		String question = questionBuffer.toString();
 		
 		//log.info("API로 보낼 질문 : {}",question);
 		
@@ -125,8 +125,8 @@ public class ChatBotController {
 	    long startTime = System.currentTimeMillis();
 	    
 		//역할 및 기능 지정(문자연산방식 수정)
-	    StringBuilder systemPromptBuilder = new StringBuilder();
-	    systemPromptBuilder.append("너는 코딩문제를 푸는 사람을 도와주는 친구야.")
+	    StringBuffer systemPromptBuffer = new StringBuffer();
+	    systemPromptBuffer.append("너는 코딩문제를 푸는 사람을 도와주는 친구야.")
 	        .append("절대 정답을 말하지 않고 질문이 들어오는 걸 토대로 문제가 해결될 수 있도록 도와줘.")
 	        .append("멘트는 대화형식이고 3줄이하로 작성해.")
 	        .append("대화는 한줄 한줄 **로 감싸")
@@ -141,7 +141,7 @@ public class ChatBotController {
 	        .append("대화 중에 당신의 행동을 묘사해야 합니다. 행동 묘사는 한 줄 띄우고 *로 감싸세요.")
 	        .append("행동묘사를 하면 그에 어울리는 이모지도 넣어.");
 
-	    String systemPrompt = systemPromptBuilder.toString();
+	    String systemPrompt = systemPromptBuffer.toString();
 		
 		//문제
 		//quizId로 Quiz 객체 조회
@@ -163,12 +163,12 @@ public class ChatBotController {
 	    }
 		
 		//API로 보낼 회원의 질문(시스템프롬프트 + 퀴즈내용 + 회원의 질문)
-	    StringBuilder questionBuilder = new StringBuilder();
-	    questionBuilder.append(systemPrompt)
+	    StringBuffer questionBuffer = new StringBuffer();
+	    questionBuffer.append(systemPrompt)
 	    .append(quiz.getContent())
 	    .append(message);
 	    
-		String question = questionBuilder.toString();
+		String question = questionBuffer.toString();
 		//log.info("API로 보낼 질문 : {}",question);
 		
 		//채팅내역저장(비동기 방식으로 전환)
@@ -192,11 +192,11 @@ public class ChatBotController {
 	    return chatModel.stream(prompt)
 	            .map(chatResponse -> {
 	                if (chatResponse.getResults() != null && !chatResponse.getResults().isEmpty()) {
-	                    return ServerSentEvent.<String>builder()
+	                    return ServerSentEvent.<String>Buffer()
 	                        .data(chatResponse.getResults().get(0).getOutput().getContent())
 	                        .build();
 	                }
-	                return ServerSentEvent.<String>builder().data("").build();
+	                return ServerSentEvent.<String>Buffer().data("").build();
 	            })
 	            .filter(sse -> !sse.data().isEmpty());
 	            
